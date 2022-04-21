@@ -60,7 +60,6 @@ int main(int argc, char* argv[]){
     switch (choice) {
         case 1:
             add(matrix1, matrix2, result, size1);
-            printf("Result:\n");
             printMatrix(result, size1);
             break;
         case 2:

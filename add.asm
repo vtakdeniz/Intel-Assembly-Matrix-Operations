@@ -9,7 +9,7 @@ global add
 add:
     push ebp
     mov ebp, esp
-
+    
     sub esp, 20
 
     mov ebx, [ebp + 8]
@@ -28,41 +28,46 @@ add:
     mov ebx,0 ; sum
 
     loop1:      
+        mov ecx,0 ; ecx=column index
         cmp esi,[esp-16] ; cmp index with size
-        mov ecx,0 ;ecx=column index
         jne loop2
         jmp end
 
     loop2:
         mov ebx,0
-
         mov edi,[esp-4]
-        mov edi,[edi+esi]
+        mov edi,[edi+esi*4]
         mov edi,[edi+ecx*4]
         add ebx,edi
 
         mov edi,[esp-8]
-        mov edi,[edi+esi]
+        mov edi,[edi+esi*4]
         mov edi,[edi+ecx*4]
         add ebx,edi
 
         mov edi,[esp-12]
-        mov edi,[edi+esi]
+        mov edi,[edi+esi*4]
         mov eax,ecx
         mov edx,4
         mul edx
         add edi,eax
         mov [edi],ebx
 
-        cmp [esp-16],ecx
+        mov edx,[esp-16]
+        cmp edx,ecx
+        jne jumptoloop2
+        jmp jumptoloop1
+    jumptoloop2:
         add ecx,1
-        jne loop2
-        add esi,1
+        jmp loop2
+    jumptoloop1:
+        inc esi
         jmp loop1
         
 end:
     
     mov esp, ebp
     pop ebp
+    
     ret
 
