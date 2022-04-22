@@ -3,7 +3,7 @@
 
 
 void add(int **matrix1, int **matrix2, int **result, int size);
-//int sum(int **matrix1, int size);
+int sum(int **matrix1, int size);
 
 int** readMatrix(char* fileName, int* size) {
     FILE* file = fopen(fileName, "r");
@@ -30,6 +30,10 @@ void printMatrix(int** matrix, int size) {
         }
         printf("\n");
     }
+}
+
+void printResult(int sumOfArray){
+    printf("\nSum of all elements in matrix1.txt : %d\n\n", sumOfArray);
 }
 
 int main(int argc, char* argv[]){
@@ -59,11 +63,12 @@ int main(int argc, char* argv[]){
     scanf("%d", &choice);
     switch (choice) {
         case 1:
+            printf("\nResult:\n\n");
             add(matrix1, matrix2, result, size1);
             printMatrix(result, size1);
             break;
         case 2:
-            //printf("Sum of matrix1.txt : %d\n", sum(matrix1, size1));
+            printResult(sum(matrix1, size1));
             break;
         default:
             printf("Error: invalid choice\n");
