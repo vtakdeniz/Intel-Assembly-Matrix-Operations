@@ -52,7 +52,7 @@ int main(int argc, char* argv[]){
         exit(1);
     }
 
-    printf("Choose which function to use:\n");
+    printf("\nChoose which function to use:\n");
     printf("1. Add\n");
     printf("2. Sum\n");
     int choice;

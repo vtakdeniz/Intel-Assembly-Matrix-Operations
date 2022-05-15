@@ -23,7 +23,7 @@ sum:
 
     loop1:      
         mov ecx,0 ; ecx=column index
-        cmp esi,[esp-8] ; cmp index with size
+        cmp esi,[esp-8]
         jne loop2
         jmp end
 

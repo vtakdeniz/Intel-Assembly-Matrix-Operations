@@ -29,7 +29,7 @@ add:
 
     loop1:      
         mov ecx,0 ; ecx=column index
-        cmp esi,[esp-16] ; cmp index with size
+        cmp esi,[esp-16]
         jne loop2
         jmp end
 
